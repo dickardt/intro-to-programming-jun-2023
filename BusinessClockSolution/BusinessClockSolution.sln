@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClockApi", "BusinessClockApi\BusinessClockApi.csproj", "{C0D09573-393D-4726-8464-88EACD84FCB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessClock.IntegrationTests", "BusinessClock.IntegrationTests\BusinessClock.IntegrationTests.csproj", "{F7D11E61-0C16-4546-A25D-3604E12C073B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C0D09573-393D-4726-8464-88EACD84FCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D09573-393D-4726-8464-88EACD84FCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D09573-393D-4726-8464-88EACD84FCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D11E61-0C16-4546-A25D-3604E12C073B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D11E61-0C16-4546-A25D-3604E12C073B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D11E61-0C16-4546-A25D-3604E12C073B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D11E61-0C16-4546-A25D-3604E12C073B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
