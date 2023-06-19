@@ -22,7 +22,8 @@ app.MapGet("/status", () =>
 
     var response = new GetStatusResponse
     {
-        Open = true
+        Open = true,
+        
     };
     return Results.Ok(response);
 });
