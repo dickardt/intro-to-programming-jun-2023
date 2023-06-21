@@ -13,14 +13,15 @@ public class GameScorer
         var max = players.Max(p =>p.score);
         var min = players.Min(p =>p.score);
         var avg = players.Average(p => p.score);
+
+  
         
         winningPlayers = players.Where(p => p.score == max).ToList();
-        losingPlayers = players.Where(p => p.score == min).ToList();
+        losingPlayers = players.Where(p => p.score == min && min != max).ToList();
         return new ScoreReport {
             Winners = winningPlayers,
-            Losers = losingPlayers,
+            Losers = max == min ? null : players.Where(p => p.score == min).ToList(),
             Average = avg
         };
-
     }
 }
