@@ -11,7 +11,7 @@ public class NewAccounts
         Account account = new Account();
 
         //When
-        decimal balance = account.balance;
+        decimal balance = account.GetBalance();
 
         //Then
         Assert.Equal(5000, balance);

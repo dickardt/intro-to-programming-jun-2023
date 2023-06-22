@@ -2,20 +2,24 @@
 {
     public class Account
     {
-        public decimal balance { get; set; }
-        public Account()
+        private decimal _balance = 5000; // Fields class level variable
+        public void Deposit(decimal amountToDeposit)
         {
-            balance = 5000;
+            _balance += amountToDeposit;
         }
 
-        public void Deposit(decimal addAmmount)
+        public decimal GetBalance()
         {
-            balance += addAmmount;
+            return _balance; // "Sliming"
         }
 
-        public void Withdrawl(decimal removeAmmount)
+        public void Withdraw(decimal amountToWithdraw)
         {
-            balance -= removeAmmount;
+            if (amountToWithdraw > _balance)
+            {
+                return;
+            }
+            _balance -= amountToWithdraw;
         }
     }
 }

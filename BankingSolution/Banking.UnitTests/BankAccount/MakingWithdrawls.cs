@@ -8,11 +8,11 @@ public class MakingWithdrawls
     public void MakingAWithdrawl()
     {
         Account account = new Account();
-        decimal openBal = account.balance;
+        decimal openBal = account.GetBalance();
         decimal withdrawlAmmount = 350.00M;
 
-        account.Withdrawl(withdrawlAmmount);
-        decimal afterBal = account.balance;
+        account.Withdraw(withdrawlAmmount);
+        decimal afterBal = account.GetBalance();
 
         Assert.Equal(openBal - withdrawlAmmount, afterBal);
     }
@@ -20,10 +20,10 @@ public class MakingWithdrawls
     public void CanTakeFullBalance()
     {
         var account = new Account();
-        var openingBalance = account.balance;
+        var openingBalance = account.GetBalance();
 
-        account.Withdrawl(openingBalance);
+        account.Withdraw(openingBalance);
 
-        Assert.Equal(0, account.balance);
+        Assert.Equal(0, account.GetBalance());
     }
 }

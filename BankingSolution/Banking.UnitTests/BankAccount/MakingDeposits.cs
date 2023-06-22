@@ -9,11 +9,11 @@ public class MakingDeposits
     public void DepositIncreasesBalance()
     {
         Account account = new Account();
-        decimal openBal = account.balance;
+        decimal openBal = account.GetBalance();
         decimal deposit = 350.00M;
 
         account.Deposit(deposit);
-        decimal endBalance = account.balance;
+        decimal endBalance = account.GetBalance();
 
         Assert.Equal(openBal+deposit, endBalance);
     }
