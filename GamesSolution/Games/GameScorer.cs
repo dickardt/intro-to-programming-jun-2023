@@ -3,25 +3,44 @@
 public class GameScorer
 {
 
+    public ScoreReport GenerateScoreReportFor(GolfGame game)
+    {
+        GuardAgainstInvalidGame(game);
+        var players = game.GetPlayers();
 
+        int highScore = players.Max(p => p.score);
+        int lowScore = players.Min(p => p.score);
+
+
+        return new ScoreReport
+        {
+            Winners = players.Where(p => p.score == lowScore).ToList(),
+            Losers = highScore == lowScore ? new() : players.Where(p => p.score == highScore).ToList(),
+            Average = players.Average(p => p.score)
+        };
+    }
     public ScoreReport GenerateScoreReportFor(BowlingGame game)
     {
-        ScoreReport scoreReport = new ScoreReport();
-        var winningPlayers = new List<Player>();
-        var losingPlayers = new List<Player>();
+        GuardAgainstInvalidGame(game);
         var players = game.GetPlayers();
-        var max = players.Max(p =>p.score);
-        var min = players.Min(p =>p.score);
-        var avg = players.Average(p => p.score);
 
-  
-        
-        winningPlayers = players.Where(p => p.score == max).ToList();
-        losingPlayers = players.Where(p => p.score == min && min != max).ToList();
-        return new ScoreReport {
-            Winners = winningPlayers,
-            Losers = max == min ? null : players.Where(p => p.score == min).ToList(),
-            Average = avg
+        int highScore = players.Max(p => p.score);
+        int lowScore = players.Min(p => p.score);
+
+
+        return new ScoreReport
+        {
+            Winners = players.Where(p => p.score == highScore).ToList(),
+            Losers = highScore == lowScore ? new() : players.Where(p => p.score == lowScore).ToList(),
+            Average = players.Average(p => p.score)
         };
+    }
+
+    private static void GuardAgainstInvalidGame(Game game)
+    {
+        if (game.GetPlayers().Count < 2)
+        {
+            throw new InvalidGameException();
+        }
     }
 }

@@ -20,7 +20,7 @@ public class AllWinnersBowlingGame
         game.addPlayer(p3.name, p3.score);
 
         _expectedWinners = new List<Player> { p1, p2, p3 };
-        _expectedLosers = null;
+        _expectedLosers = new();
         _expectedAverage = (double)(p1.score + p2.score + p3.score) / 3;
 
         var scorer = new GameScorer();
