@@ -5,8 +5,14 @@ public class Account
     private decimal _balance = 5000; // Fields class level variable
     public void Deposit(decimal amountToDeposit)
     {
-        _balance += amountToDeposit;
+        
+        var bonusCalculator = new StandardBonusCalculator();
+        decimal bonus = bonusCalculator.CalculateBonusForDepositOn(_balance, amountToDeposit);
+
+        _balance += amountToDeposit + bonus;
     }
+
+   
 
     public decimal GetBalance()
     {
@@ -17,7 +23,7 @@ public class Account
     {
         if(amountToWithdraw > _balance)
         {
-            return;
+            throw new OverdraftException();
         }
        _balance -= amountToWithdraw;
     }
