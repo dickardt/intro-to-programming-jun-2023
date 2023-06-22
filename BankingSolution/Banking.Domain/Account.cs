@@ -1,11 +1,20 @@
 ﻿namespace Banking.Domain
 {
+    public enum LoyaltyLevel { Standard, Gold};
     public class Account
     {
         private decimal _balance = 5000; // Fields class level variable
+        public LoyaltyLevel _accountType { get; set; } = LoyaltyLevel.Standard;
         public void Deposit(decimal amountToDeposit)
         {
-            _balance += amountToDeposit;
+            if (_accountType == LoyaltyLevel.Standard)
+            {
+                _balance += amountToDeposit;
+            } 
+            else
+            {
+                _balance += amountToDeposit * 1.10M;
+            }
         }
 
         public decimal GetBalance()
@@ -17,7 +26,7 @@
         {
             if (amountToWithdraw > _balance)
             {
-                return;
+               throw new OverdraftException();
             }
             _balance -= amountToWithdraw;
         }
