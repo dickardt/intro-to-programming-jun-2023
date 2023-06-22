@@ -4,17 +4,19 @@
     public class Account
     {
         private decimal _balance = 5000; // Fields class level variable
-        public LoyaltyLevel _accountType { get; set; } = LoyaltyLevel.Standard;
+        private ICanCalculateBonuses _bonusCalculator;
+
+        public Account(ICanCalculateBonuses bonusCalculator)
+        {
+            _bonusCalculator = bonusCalculator;
+        }
         public void Deposit(decimal amountToDeposit)
         {
-            if (_accountType == LoyaltyLevel.Standard)
-            {
-                _balance += amountToDeposit;
-            } 
-            else
-            {
-                _balance += amountToDeposit * 1.10M;
-            }
+
+            decimal bonus = _bonusCalculator.CalculateBonusForDepositOn(_balance, amountToDeposit);
+
+
+            _balance += amountToDeposit + bonus;
         }
 
         public decimal GetBalance()

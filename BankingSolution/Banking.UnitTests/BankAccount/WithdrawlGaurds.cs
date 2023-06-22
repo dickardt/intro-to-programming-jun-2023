@@ -1,6 +1,7 @@
 ﻿
 
 using Banking.Domain;
+using Banking.UnitTests.TestDoubles;
 
 namespace Banking.UnitTests.BankAccount;
 public class WithdrawlGaurds
@@ -8,7 +9,7 @@ public class WithdrawlGaurds
     [Fact]
     public void OverdraftNotAllowed()
     {
-        var account = new Account();
+        var account = new Account(new DummyBonusCalculator());
         var openingBalance = account.GetBalance();
 
         try
@@ -25,7 +26,7 @@ public class WithdrawlGaurds
     [Fact]
     public void OverdraftThrowsException()
     {
-        var account = new Account();
+        var account = new Account(new DummyBonusCalculator());
         var openingBalance = account.GetBalance();
 
         Assert.Throws<OverdraftException>(() => account.Withdraw(openingBalance + .01M));
