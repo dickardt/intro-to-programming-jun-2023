@@ -6,15 +6,16 @@
         {
         }
 
-        public string Greet(string? name)
+        public string Greet(string? name, string? newName = null)
         {
-            if (name == null) { return "Hello, Buddy";  }
+            if (newName != null) { return $"Hello, {name} and {newName}!"; }
+            if (name == null) { return "Hello, Buddy!";  }
 
             if (name.ToUpper() == name)
             {
-                return $"HELLO, {name}";
+                return $"HELLO, {name}!";
             }
-            return $"Hello, {name}";
+            return $"Hello, {name}!";
         }
     }
 }
