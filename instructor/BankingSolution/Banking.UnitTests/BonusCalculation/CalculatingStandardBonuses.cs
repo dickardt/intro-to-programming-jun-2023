@@ -12,7 +12,7 @@ public class CalculatingStandardBonuses
     {
         var bonusCalculator = new StandardBonusCalculator();
 
-        decimal bonus = bonusCalculator.CalculateBonusForDepositOn(5000.01M, amountToDeposit);
+        decimal bonus = bonusCalculator.CalculateBonusForDepositOn(4000.01M, amountToDeposit);
 
         Assert.Equal(expectedBonus, bonus);
     }
@@ -24,7 +24,7 @@ public class CalculatingStandardBonuses
     {
         var bonusCalculator = new StandardBonusCalculator();
 
-        decimal bonus = bonusCalculator.CalculateBonusForDepositOn(5000.00M, amountToDeposit);
+        decimal bonus = bonusCalculator.CalculateBonusForDepositOn(4000.00M, amountToDeposit);
 
         Assert.Equal(expectedBonus, bonus);
     }
