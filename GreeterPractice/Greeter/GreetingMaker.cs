@@ -6,8 +6,9 @@
         {
         }
 
-        public string Greet(string name)
+        public string Greet(string? name)
         {
+            if (name == null) { return "Hello, Buddy";  }
             return $"Hello, {name}";
         }
     }

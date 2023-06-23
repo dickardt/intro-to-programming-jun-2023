@@ -14,4 +14,13 @@ public class GreetingTest
 
         Assert.Equal($"Hello, {name}", greeting);
     }
+    [Fact]
+    public void NullName()
+    {
+        var greeter = new GreetingMaker();
+
+        string greeting = greeter.Greet(null);
+
+        Assert.Equal("Hello, Buddy", greeting);
+    }
 }
