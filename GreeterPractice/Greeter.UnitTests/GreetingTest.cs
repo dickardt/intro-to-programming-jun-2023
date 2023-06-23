@@ -49,4 +49,16 @@ public class GreetingTest
 
         Assert.Equal(expected, greeting);
     }
+    //Handle an unknown length of names in a greeting
+    [Theory]
+    [InlineData("Hello, Tyler, Dana, and Anala!", "Tyler", "Dana", "Anala")]
+    [InlineData("Hello, Tyler, Dana, Cecelia, and Anala!", "Tyler", "Dana", "Cecelia", "Anala" )]
+    public void MultipleNameGreeting(string expected, string name, params string[] names)
+    {
+        var greeter = new GreetingMaker();
+
+        string greeting = greeter.Greet(name, names);
+
+        Assert.Equal(expected, greeting);
+    }
 }
