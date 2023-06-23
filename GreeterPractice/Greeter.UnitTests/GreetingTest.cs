@@ -61,4 +61,16 @@ public class GreetingTest
 
         Assert.Equal(expected, greeting);
     }
+    //Handle random shouts in the name list Req 6
+    [Theory]
+    [InlineData("HELLO, TYLER AND DANA!", "TYLER", "DANA")]
+    [InlineData("HELLO, VINNIE, NEIL, AND KEVIN!", "VINNIE", "NEIL", "KEVIN")]
+    public void AllShoutsInArray(string expected, string name, params string[] names)
+    {
+        var greeter = new GreetingMaker();
+
+        string greeting = greeter.Greet(name, names);
+
+        Assert.Equal(expected, greeting);
+    }
 }
