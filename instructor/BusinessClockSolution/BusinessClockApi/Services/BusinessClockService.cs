@@ -40,6 +40,14 @@ public class SystemTime : ISystemTime
 {
     public DateTime GetCurrent()
     {
-        return DateTime.Now;
+        return DateTime.Now; /// local time - wherever this is running.
+    }
+}
+
+public class GmtSystemTime : ISystemTime
+{
+    public DateTime GetCurrent()
+    {
+        return DateTimeOffset.UtcNow.UtcDateTime;
     }
 }

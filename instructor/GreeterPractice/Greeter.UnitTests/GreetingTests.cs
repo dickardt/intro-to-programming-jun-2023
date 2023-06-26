@@ -66,12 +66,12 @@ public class GreetingTests
         Assert.Equal("Hello, Ian, Guy, Brendan, and Joe!", greeting);
     }
 
-    [Fact]
+    [Fact(Skip ="Remove this from the practice.")]
     public void HandlesNulls()
     {
-        var greeting = greeter.Greet(null);
+        //var greeting = greeter.Greet(null);
 
-        Assert.Equal("Hello, Chief!", greeting);
+        //Assert.Equal("Hello, Chief!", greeting);
     }
     [Fact]
     public void ArbitraryListOfNamesAllShouted()
@@ -98,16 +98,16 @@ public class GreetingTests
         Assert.Equal("Hello, Ian, AND GUY!", greeting);
     }
 
-    [Fact(Skip = "Question")]
+    [Fact(Skip = "Remove from Practice - but what if an empty string?")]
     public void NullsInListOfNames()
     {
 
 
-        string greeting = greeter.Greet("Ian", null, "Bill");
+        //string greeting = greeter.Greet("Ian", null, "Bill");
 
-        Assert.Equal("Hello, Ian, Chief!, and, Bill!", greeting);
+        //Assert.Equal("Hello, Ian, Chief!, and, Bill!", greeting);
 
-        string greetin2 = greeter.Greet("Ian", null, "Bill", null, "Sue");
+        //string greetin2 = greeter.Greet("Ian", null, "Bill", null, "Sue");
 
     }
 }

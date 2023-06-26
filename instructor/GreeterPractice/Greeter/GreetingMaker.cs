@@ -14,9 +14,8 @@ public class GreetingMaker
         _trollNotifier = trollNotifier;
     }
 
-    public string Greet(params string?[]? names)
+    public string Greet(params string[] names)
     {
-        if(names is null) { return "Hello, Chief!"; }
         var bannedNames = _bannedNamesService.GetListOfBannedNames();
         var attemptedBannedNames = names.Intersect(bannedNames).ToList();
         if(attemptedBannedNames.Count == names.Length)
@@ -44,7 +43,7 @@ public class GreetingMaker
             return $"Hello, {string.Join(", ", nonShoutedNames)}, AND {string.Join(", ",shoutedNames)}!";
         }
         var prefix = allUpper ? "HELLO" : "Hello";
-        var separator = allUpper ? "AND": "and";
+        var separator = allUpper ? "AND" : "and";
         if (names.Length > 1)
         {
             var beginning = names.Take(names.Length - 1).ToArray();
@@ -52,10 +51,12 @@ public class GreetingMaker
             var startNames = string.Join(", ", beginning);
 
             return $"{prefix}, {startNames}, {separator} {last}!";
-        } else
+        }
+        else
         {
             return $"{prefix}, {names[0]}!";
         }
+    }
 
         
         

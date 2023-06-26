@@ -1,7 +1,7 @@
 
 
 using BusinessClockApi.Models;
-
+using BusinessClockApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<BusinessClockService>();
+builder.Services.AddSingleton<ISystemTime, GmtSystemTime>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,13 +21,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/status", () =>
+app.MapGet("/status", (BusinessClockService service) =>
 {
-    var response = new GetStatusResponse
-    {
-        Open = true,
-       
-    };
+    var response = service.GetCurrentStatus();
     return Results.Ok(response);
 });
 
